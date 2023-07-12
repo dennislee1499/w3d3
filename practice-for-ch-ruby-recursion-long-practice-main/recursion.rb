@@ -37,4 +37,25 @@ def exp2(b, p)
     end
 end
 
+class Array
+    def deep_dup
+
+    end
+end
+
+# iterate through outer array 
+# want to copy all arrays
+#  want to shovel elements into array without modifying og
+# if element of array is an array, perform deep dup 
+# if ele != arr, add to outermost arr
+# if subarr.length == 0 then return [] - basecase1
+# if subarr.length == 1 then return subbarr[0] - basecase2
+
+def dup(arr)
+    
+
+    new_arr = []
+    return [] if arr.empty?
+    arr[-1] + dup[0...-1] 
+end
 
