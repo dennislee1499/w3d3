@@ -51,11 +51,44 @@ end
 # if subarr.length == 0 then return [] - basecase1
 # if subarr.length == 1 then return subbarr[0] - basecase2
 
-def dup(arr)
-    
-
+def deep_dup(arr)
     new_arr = []
-    return [] if arr.empty?
-    arr[-1] + dup[0...-1] 
+    arr.each do |ele|
+        if ele.is_a?(Array)
+           new_arr << deep_dup(ele)
+        else
+            new_arr << ele
+        end
+    end
+    #running the method, but not calling it recursively == base case
+    new_arr
 end
 
+def fib(n)
+    return [0] if n == 1
+    return [0,1] if n == 2
+    previous_fib = fib(n-1)
+    previous_fib << previous_fib[-1] + previous_fib[-2]
+end
+
+def fib_iter(n)
+    return [0] if n == 1
+    return [0,1] if n == 2
+    arr = [0, 1]
+    while arr.length < n 
+        arr << arr[-1] + arr[-2]
+    end
+    arr
+end
+
+# starts with 0 1
+#fib(1) == [0]
+#fib(2) == [0, 1]
+#fib(3) == [0, 1, 1]
+#fib(4) == [0, 1, 1, 2]
+#fib(5) == [0, 1, 1, 2, 3]
+
+#take an integer n, return first n fibonacci numbers
+#sum of 2 previous numbers equals next in the sequence
+#if n = 3
+# fib (n-2)
