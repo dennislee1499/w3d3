@@ -19,12 +19,22 @@ def range_recursive(first, last)
 
 end
 
-# []   
-# range_recursive (1,1) # [1] return 1 
-#range_recursive(1,2) return 1 
-# range_recursive(1,3) [1, 2] return 6
-# 
+def exp(b, p)
+    return 0 if b == 0
+    return 1 if p == 0
+    # return 1 if b == 1
+    b * exp(b, p - 1)
+end
 
-#
+def exp2(b, p)
+    return 0 if b == 0
+    return 1 if p == 0
+    return b if p == 1
+    if p % 2 == 0
+        exp2(b, p/2) **2
+    else
+        b * (exp2(b, (p-1)/2)**2)
+    end
+end
 
 
